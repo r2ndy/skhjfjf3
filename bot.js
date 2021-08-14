@@ -651,7 +651,7 @@ client.on('message', message => {
   .setAuthor(message.author.username)
   .setColor("#8650a7")
   .addField("Done" , " تــــم ارســالك في الخــاص")
-  message.channel.sendEmbed(embed);
+  message.channel.send(embed);
     }
 });
 
