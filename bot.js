@@ -679,7 +679,7 @@ if(ra3d.content.startsWith(prefix + 'ccolors')) {
                     let count = 0;
                     let ecount = 0;
           for(let x = 1; x < `${parseInt(args)+1}`; x++){
-            message.guild.roles.create({name:x,
+            ra3d.guild.roles.create({name:x,
               color: 'RANDOM'})
               }
             }
