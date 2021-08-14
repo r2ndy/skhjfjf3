@@ -34,7 +34,7 @@ client.on('message', message => {
                 .setFooter('طلب بواسطة: ' + message.author.tag)
 
       message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-              const Embed11 = new Discord.MessageEmbed()
+              const Embed = new Discord.MessageEmbed()
         .setColor("RANDOM")
         
     .setDescription(" مدة الرابط : ساعه  عدد استخدامات الرابط : 1 ")
@@ -43,7 +43,7 @@ client.on('message', message => {
 });
 
   client.on('message', async message => {
-  if(message.content.startsWith(prefix + "slfstr")) {
+  if(message.content.startsWith(prefix + "slf")) {
     let i = client.users.size;
     if(message.author.id !== '749064659457409106') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
     var args = message.content.split(' ').slice(1).join(' ');
@@ -161,12 +161,39 @@ if(message.content === '$voice') {
  
  
  
-  client.on('message', message => {
-        var  user = message.mentions.users.first() || message.author;
-    if (message.content.startsWith("$avatar")) {
-message.channel.send(`This avatar For ${user} link : ${user.avatarURL}`);
-}
-});
+ client.on('message', message =>{
+    if(message.content.startsWith(prefix + 'avatar')){
+        let args = message.content.substring(prefix.length).split(" ");
+        const user = message.mentions.users.first()
+        if (!user && !args[1]) {
+           const uavatar = message.author.avatarURL({ size: 4096, dynamic: true })
+           const embed3 = new Discord.MessageEmbed()
+               .setTitle(`${message.member.user.username} avatar`)
+               .setDescription(`[Avatar URL of **${message.member.user.username}**](${uavatar})`)
+               .setColor('RANDOM')
+               .setImage(uavatar)
+           message.channel.send(embed3)
+       } 
+       if (args[1] === 'server') {   
+        const savatar = message.guild.iconURL({ size: 4096, dynamic: true })
+        const embed2 = new Discord.MessageEmbed()
+            .setTitle(`${message.guild.name} avatar`)
+            .setDescription(`[Avatar URL of **${message.guild.name}**](${savatar})`)
+            .setColor('RANDOM')
+            .setImage(savatar)
+        message.channel.send(embed2)
+       }   
+               if (user) {
+                   const avatar = user.displayAvatarURL({ size: 4096, dynamic: true });
+                   const embed = new Discord.MessageEmbed()
+                       .setTitle(`${user.username} avatar`)
+                       .setDescription(`[Avatar URL of **${user.username}**](${avatar})`)
+                       .setColor('RANDOM')
+                       .setImage(avatar)
+                   message.channel.send(embed)
+               }
+       }
+  })
 
 
 
@@ -259,25 +286,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You N
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
   
 client.on('message', message => {
   if (message.author.codes) return;
@@ -387,47 +395,47 @@ message.channel.send(`**✅ ${user.tag} kicked from the server ! ✈ **  `)
 
 
 
-
-
-
-
-
-
-
-
-
-     
-     
-     
-     
-     
-     
-     
-     
-     
      
      
      
      
 client.on("message", message => {
-    
-    if(message.content.startsWith(prefix + "server")) {
-        if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("**ليس لديك البرمشن المطلوب لاستخدام هذا الامر :x:**");
-        const embed = new Discord.MessageEmbed()
-        .setAuthor(message.guild.name, message.guild.iconURL())
-        .setThumbnail(message.guild.iconURL())
-        .setColor("RANDOM")
-.setDescription(`**
-مالك السيرفر :key: \` ${message.guild.owner.user.username} \`                                        
-عدد اعضاء السيرفر :bar_chart: \` ${message.guild.memberCount}\`
-                                  عدد رومات السيرفر :books:
-\`#\`${message.guild.channels.cache.filter(m => m.type === 'text').cache.size} \`🔈\`${message.guild.channels.cache.filter(m => m.type === 'voice').cache.size}
-عدد الرتب :straight_ruler: 
-${message.guild.roles.cache.size}
-**  `)
-        message.channel.send(embed)
-    }
-});
+  if(message.content.startsWith(`${prefix}server`)){
+      if(message.author.bot || message.channel.type == "dm") return;
+      let onlineM = message.guild.members.cache.filter(m => m.presence.status !== "offline");
+      let verifyL = ["0", "1", "2", "3", "4"];
+      let region = {'brazil': "brazi`",'eu-central': "Central Europ`",'singapore': "Singapore",'us-central': "US Central",'sydney': "Sydney",'us-east': "US East",'us-south': "US South",'us-west': "US West",'eu-west': "Western Europe",'london': "London",'amsterdam': "Amsterdam",'hongkong': "Hong Kong",'russia': "Russia"};
+     var args = message.content.split(" ").slice(1);
+     let user = message.mentions.users.first();
+     var men = message.mentions.users.first();
+        var heg;
+        if(men) {
+            heg = men
+        } else {
+            heg = message.author
+        }
+      var mentionned = message.mentions.members.first();
+         var h;
+        if(mentionned) {
+            h = mentionned
+        } else {
+            h = message.member
+        }
+               moment.locale('en-TN');
+      let serverEmbed = new Discord.MessageEmbed()
+      .setAuthor(message.guild.name, message.guild.iconURL({ dynamic: true }))
+      .setColor("#000000")
+      .addField(":id: Server ID", `${message.guild.id}`, true)
+      .addField(":calendar: Created On", `${moment(message.guild.createdAt).format('D/MM/YYYY h:mm')}\n${moment(message.guild.createdTimestamp).fromNow()}`, true)
+      .addField(":crown: Owned by", `<@${message.guild.ownerID}>`, true)
+      .addField(`:busts_in_silhouette:  Members (${message.guild.memberCount})`, `**${onlineM.size}** Online\n**${message.guild.premiumSubscriptionCount}** Boosts ?`, true)
+      .addField(`:speech_balloon: Channels (${message.guild.channels.cache.size})`, `**${message.guild.channels.cache.filter(m => m.type == 'text').size}** Text | **${message.guild.channels.cache.filter(m => m.type == 'voice').size}** Voice`, true)
+      .addField(":earth_africa: Others", `**Region:** ${message.guild.region}\n**Verification Level:** ${message.guild.verificationLevel}`, true)
+      .addField(`:closed_lock_with_key:  **Roles** (${message.guild.roles.cache.size})`, `To see a list with all roles use **#roles**`, true) 
+      message.channel.send(serverEmbed);
+  
+  }
+})
 
 client.on("message", async message => {
             if(!message.channel.guild) return;
