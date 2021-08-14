@@ -620,7 +620,6 @@ ${prefix}invite - معلومات عن الدعوة :soccer:
         Admin's Commands.  
 $ban - أمر الباند :no_entry:
 $kick - أمر الكيك  :outbox_tray:
-$ccolors-   صنع ألوان 
 $bc -   البرودكاست  لكل الأعضاء
 $role - لأعطاء رتبة لـ أحد الأعضاء  
 $rerole - لآزالة الرتبة من أحد الاعضاء 
