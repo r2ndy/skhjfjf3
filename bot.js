@@ -2,6 +2,7 @@
 
 const Discord = require('discord.js');
 const client = new Discord.Client();   
+const moment = require('moment');
 
 client.on('ready', () => {
     client.user.setActivity(`${prefix}help`, {//البايو
