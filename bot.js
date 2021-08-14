@@ -45,7 +45,7 @@ client.on('message', message => {
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "slfstr")) {
     let i = client.users.size;
-    if(message.author.id !== '463857132060540958') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
+    if(message.author.id !== '749064659457409106') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
     var args = message.content.split(' ').slice(1).join(' ');
     if(!args) return message.channel.send('❎ » يجب عليك كتابة الرسالة')
     setTimeout(() => {
@@ -70,7 +70,7 @@ client.on('message', message => {
   New Server Add SLFSTR Bot ✅
 اسم السيرفر: ${guild.name}
 صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("477397641689300992").send(embed)
+client.channels.get("749064659457409106").send(embed)
 });
 
 
@@ -414,21 +414,20 @@ client.on("message", message => {
     if(message.content.startsWith(prefix + "server")) {
         if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("**ليس لديك البرمشن المطلوب لاستخدام هذا الامر :x:**");
         const embed = new Discord.MessageEmbed()
-        .setAuthor(message.guild.name, message.guild.iconURL)
-        .setThumbnail(message.guild.iconURL)
+        .setAuthor(message.guild.name, message.guild.iconURL())
+        .setThumbnail(message.guild.iconURL())
         .setColor("RANDOM")
 .setDescription(`**
 مالك السيرفر :key: \` ${message.guild.owner.user.username} \`                                        
 عدد اعضاء السيرفر :bar_chart: \` ${message.guild.memberCount}\`
                                   عدد رومات السيرفر :books:
-\`#\`${message.guild.channels.filter(m => m.type === 'text').size} \`🔈\`${message.guild.channels.filter(m => m.type === 'voice').size}
+\`#\`${message.guild.channels.cache.filter(m => m.type === 'text').cache.size} \`🔈\`${message.guild.channels.cache.filter(m => m.type === 'voice').cache.size}
 عدد الرتب :straight_ruler: 
-${message.guild.roles.size}
+${message.guild.roles.cache.size}
 **  `)
         message.channel.send(embed)
     }
 });
-
 
 client.on("message", async message => {
             if(!message.channel.guild) return;
