@@ -26,7 +26,7 @@ client.on('message', message => {
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MesageEmbed()
         .setColor("RANDOM")
           .setDescription(" تم أرسال الرابط برسالة خاصة ")
            .setAuthor(client.user.username, client.user.avatarURL)
@@ -34,11 +34,11 @@ client.on('message', message => {
                 .setFooter('طلب بواسطة: ' + message.author.tag)
 
       message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-              const Embed11 = new Discord.RichEmbed()
+              const Embed11 = new Discord.MessageEmbed()
         .setColor("RANDOM")
         
     .setDescription(" مدة الرابط : ساعه  عدد استخدامات الرابط : 1 ")
-      message.author.sendEmbed(Embed11)
+      message.author.send(embed)
     }
 });
 
@@ -62,15 +62,15 @@ client.on('message', message => {
 
 
  client.on('guildCreate', guild => {
-         const embed = new Discord.RichEmbed()
+         const embed = new Discord.MessageEmbed()
      .setColor("RED")
      .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=474733285440749570&permissions=8&scope=bot')
+     .setURL('https://discord.com/api/oauth2/authorize?client_id=875193308748587068&permissions=8&scope=bot')
   .setDescription(`**
   New Server Add SLFSTR Bot ✅
 اسم السيرفر: ${guild.name}
 صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("477397641689300992").sendEmbed(embed)
+client.channels.get("477397641689300992").send(embed)
 });
 
 
@@ -82,18 +82,6 @@ client.channels.get("477397641689300992").sendEmbed(embed)
 
 
 
-
-client.on('guildDelete', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("GOLD")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=474733285440749570&permissions=8&scope=bot')
-  .setDescription(`**
-  Server Kicked SLFSTR Bot :cry:
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("477397641689300992").sendEmbed(embed)
-});
  
 
  
@@ -119,7 +107,7 @@ client.channels.get("477397641689300992").sendEmbed(embed)
                 READ_MESSAGES: true
             });
             message.channel.send(`تم أنشاء التذكره , #${c.name}.`);
-            const embed = new Discord.RichEmbed()
+            const embed = new Discord.MessageEmbed()
                 .setColor(0xCF40FA)
                 .addField(` ${message.author.username}!`, ` *** شكرًا لك على التواصل مع فريق الدعم! سنرد عليك في أقرب وقت ممكن.. *** `)
                 .setTimestamp();
@@ -197,7 +185,7 @@ message.channel.send(`This avatar For ${user} link : ${user.avatarURL}`);
     message.guild.fetchInvites().then(i => {
       let inv = i.get(args[0]);
       if(!inv) return message.reply(`**لم اقدر على ايجاد ${args}**`);
-      var iNv = new Discord.RichEmbed()
+      var iNv = new Discord.MessageEmbed()
       .setAuthor(message.author.username,message.author.avatarURL)
       .setThumbnail(message.author.avatarURL)
       .addField('# - صاحب الدعوة',inv.inviter,true)
@@ -240,7 +228,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You N
          SEND_MESSAGES: false
 
            }).then(() => {
- const e = new Discord.RichEmbed()
+ const e = new Discord.MessageEmbed()
                .setAuthor('Channel Disabled By : '+message.author.username)
                 .setColor('#36393e')
                
@@ -425,7 +413,7 @@ client.on("message", message => {
     
     if(message.content.startsWith(prefix + "server")) {
         if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send("**ليس لديك البرمشن المطلوب لاستخدام هذا الامر :x:**");
-        const embed = new Discord.RichEmbed()
+        const embed = new Discord.MessageEmbed()
         .setAuthor(message.guild.name, message.guild.iconURL)
         .setThumbnail(message.guild.iconURL)
         .setColor("RANDOM")
@@ -437,7 +425,7 @@ client.on("message", message => {
 عدد الرتب :straight_ruler: 
 ${message.guild.roles.size}
 **  `)
-        message.channel.send({embed:embed})
+        message.channel.send(embed)
     }
 });
 
@@ -460,7 +448,7 @@ client.on("message", async message => {
             });
           if (nul > 0) {
               console.log(`\n${message.author.tag} has ${nul} invites in ${guild.name}\n`)
-              var embed = new Discord.RichEmbed()
+              var embed = new Discord.MessageEmbed()
                   .setColor("#000000")
                     .addField(`${message.author.username}`, `you are add**${nul}** human
                     **${leave}`)
@@ -471,7 +459,7 @@ client.on("message", async message => {
                         .setColor("#000000")
                         .addField(`${message.author.username}`, `you can't not invite a one in this server`)
 
-                       message.channel.send({ embed: embed });
+                       message.channel.send(embed);
                         return;
                     }
         }
@@ -488,16 +476,16 @@ codes.push(`discord.gg/${invite.code}`)
 })
 }).then(m => {
 if (codes.length < 0) {
-    var embed = new Discord.RichEmbed()
+    var embed = new Discord.MessageEmbed()
 .setColor("#000000")
 .addField(`Your invite codes in ${message.guild.name}`, `You currently don't have any active invites! Please create an invite and start inviting, then you will be able to see your codes here!`)
 message.author.send({ embed: embed });
 return;
 } else {
-    var embed = new Discord.RichEmbed()
+    var embed = new Discord.MessageEmbed()
 .setColor("#000000")
 .addField(`Your invite codes in ${message.guild.name}`, `Invite Codes:\n${codes.join("\n")}`)
-message.author.send({ embed: embed });
+message.author.send(embed);
 return;
 }
 })
@@ -512,7 +500,7 @@ return;
 client.on('message', message => {
    let args = message.content.split(" ").slice(1);
   if (message.content.startsWith(prefix + "serch")) {
-let Embed = new Discord.RichEmbed()
+let Embed = new Discord.MessageEmbed()
         .setColor(0x36393e);
     if (!args[0]) {
         Embed.setFooter(`**للأستعمال : $serch [ Letter ].**`);
@@ -576,10 +564,10 @@ client.on('message',async message => {
 
    client.on('message', message => {
      if (message.content === "$sup") {
-     let embed = new Discord.RichEmbed()
+     let embed = new Discord.MessageEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
-  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/M3vsUp8**")
+  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/HatwJavgM5**")
      
      
   message.channel.sendEmbed(embed);
@@ -594,10 +582,10 @@ client.on('message',async message => {
             client.on('message', message => {
 		     	var prefix ="$";
                 if(message.content === prefix + "inv") {
-                    let embed = new Discord.RichEmbed ()
+                    let embed = new Discord.MessageEmbed ()
                     embed.setTitle("**:arrow_right: Invite Cozmo Bot!**")
-                    .setURL("https://discordapp.com/api/oauth2/authorize?client_id=474733285440749570&permissions=8&scope=bot");
-                   message.channel.sendEmbed(embed);
+                    .setURL("https://discord.com/api/oauth2/authorize?client_id=875193308748587068&permissions=8&scope=bot");
+                   message.channel.send(embed);
                   }
 });
 
@@ -609,12 +597,7 @@ client.on('message', message => {
 .setColor('RANDOM')
         .setDescription(`**
 
-╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╭━━╮╱╱╱╭╮
-┃╭━╮┃╱╱╱╱╱╱╱╱╱╱╱╱╱┃╭╮┃╱╱╭╯╰╮
-┃┃╱╰╋━━┳━━━┳╮╭┳━━╮┃╰╯╰┳━┻╮╭╯
-┃┃╱╭┫╭╮┣━━┃┃╰╯┃╭╮┃┃╭━╮┃╭╮┃┃
-┃╰━╯┃╰╯┃┃━━┫┃┃┃╰╯┃┃╰━╯┃╰╯┃╰╮
-╰━━━┻━━┻━━━┻┻┻┻━━╯╰━━━┻━━┻━╯
+
 General's Commands. 
 ${prefix}server - معلومات عن سيرفرك :scroll:
 ${prefix}id - الأيدي حقك :flashlight:
@@ -743,12 +726,12 @@ codes.push(`discord.gg/${invite.code}`)
  
 })
   if (nul > 0) {
-      const e = new Discord.RichEmbed()
+      const e = new Discord.MessageEmbed()
       .addField(`${message.author.username}`, `لقد قمت بدعوة **${nul}** شخص`)
       .setColor('#36393e')
       message.channel.send(e)
   }else {
-                       var embed = new Discord.RichEmbed()
+                       var embed = new Discord.MessageEmbed()
                         .setColor("#000000")
                         .addField(`${message.author.username}`, `لم تقم بدعوة أي شخص لهذة السيرفر`)
 
@@ -757,17 +740,17 @@ codes.push(`discord.gg/${invite.code}`)
                     }
 }).then(m => {
 if (codes.length < 0) {
-    var embed = new Discord.RichEmbed()
+    var embed = new Discord.MessageEmbed()
 .setColor("#000000")
 .addField(`Your invite codes in ${message.guild.name}`, `You currently don't have any active invites! Please create an invite and start inviting, then you will be able to see your codes here!`)
-message.channel.send({ embed: embed });
+message.channel.send(embed);
 return;
 } else {
-    var embed = new Discord.RichEmbed()
+    var embed = new Discord.MessageEmbed()
 .setColor("#000000")
 .addField(`Your invite codes in ${message.guild.name}`, `Invite Codes :\n${codes.join("\n")}`)
 .setColor('#36393e')
-message.channel.send({ embed: embed });
+message.channel.send(embed);
 return;
 }
 })
@@ -790,7 +773,7 @@ return;
       client.on('message',async message =>{ 
     if(message.content.startsWith(prefix + "channels")) {
         let i = 1;
-        let embed = new Discord.RichEmbed()
+        let embed = new Discord.MessageEmbed()
         .setAuthor(message.author.username, message.author.avatarURL)
         .setTitle(message.guild.name)
         .setThumbnail(message.guild.iconURL)
@@ -818,7 +801,7 @@ return;
 client.on('message', message => {
           let args = message.content.split(' ').slice(1);
    if(message.content.split(' ')[0] == '$color'){
-           const embedd = new Discord.RichEmbed()
+           const embedd = new Discord.MessageEmbed()
      .setFooter('Requested by '+message.author.username, message.author.avatarURL)
    .setDescription(`**There's No Color With This Number ** :x: `)
    .setColor(`ff0000`)
@@ -831,7 +814,7 @@ if    (!(message.guild.roles.find("name",`${args}`))) return  message.channel.se
 
        var a = message.guild.roles.find("name",`${args}`)
                 if(!a)return;
-const embed = new Discord.RichEmbed()
+const embed = new Discord.MessageEmbed()
                     
      .setFooter('Requested by '+message.author.username, message.author.avatarURL)
    .setDescription(`**Color Changed To Successfully** :white_check_mark: `)
@@ -1115,7 +1098,7 @@ message.channel.send(embed)
 client.on('message', message => {
    let args = message.content.split(" ").slice(1);
   if (message.content.startsWith(prefix + "search")) {
-let Embed = new Discord.RichEmbed()
+let Embed = new Discord.MessageEmbed()
         .setColor(0x36393e);
     if (!args[0]) {
         Embed.setFooter(`**للأستعمال : $search [ Letter ].**`);
@@ -1214,7 +1197,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
       let user = logs.entries.first().executor.username
 
     if(m1 === false && m2 === true) {
-       let embed = new Discord.RichEmbed()
+       let embed = new Discord.MessageEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
        .setDescription(`${newM} Has Been Voice Muted`)
        .setFooter(`By : ${user}`)
@@ -1223,7 +1206,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
        ch.send(embed)
     }
     if(m1 === true && m2 === false) {
-       let embed = new Discord.RichEmbed()
+       let embed = new Discord.MessageEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
        .setDescription(`${newM} Has Been Voice UnMuted`)
        .setFooter(`By : ${user}`)
@@ -1233,7 +1216,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
        ch.send(embed)
     }
     if(d1 === false && d2 === true) {
-       let embed = new Discord.RichEmbed()
+       let embed = new Discord.MessageEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
        .setDescription(`${newM} Has Been Voice Deafened`)
        .setFooter(`By : ${user}`)
@@ -1243,7 +1226,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
        ch.send(embed)
     }
     if(d1 === true && d2 === false) {
-       let embed = new Discord.RichEmbed()
+       let embed = new Discord.MessageEmbed()
        .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
        .setDescription(`${newM} Has Been Voice UnDeafened`)
        .setFooter(`By : ${user}`)
@@ -1262,7 +1245,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
     const channel = message.guild.channels.find('name', 'log');
     if (!channel) return;
  
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
        .setAuthor(`${message.author.tag}`, message.author.avatarURL)
        .setTitle('Message Edited')
        .addField('Before Edit',`${message.cleanContent}`)
@@ -1271,7 +1254,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
        .addField('By', `<@${message.author.id}> `)
        .setColor('#36393e')
        .setTimestamp();
-     channel.send({embed:embed});
+     channel.send(embed);
  
  
 });
@@ -1291,7 +1274,7 @@ client.on('guildMemberAdd', member => {
        .setColor('#36393e')
        .setDescription(` <@${member.user.id}> Joined To The Server`)
        .setTimestamp();
-     channel.send({embed:embed});
+     channel.send(embed);
 });
  
 client.on('guildMemberRemove', member => {
@@ -1303,12 +1286,12 @@ client.on('guildMemberRemove', member => {
     let memberavatar = member.user.avatarURL
     const fromNow = moment(member.joinedTimestamp).fromNow();
    
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
        .setAuthor(`${member.user.tag}`, member.user.avatarURL)
        .setColor('#36393e')
        .setDescription(` <@${member.user.id}> Left From The Server`)
        .setTimestamp();
-     channel.send({embed:embed});
+     channel.send(embed);
 });
  
 client.on('messageDelete', message => {
@@ -1316,7 +1299,7 @@ client.on('messageDelete', message => {
     const channel = message.guild.channels.find('name', 'log');
     if (!channel) return;
    
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
        .setAuthor(`${message.author.tag}`, message.author.avatarURL)
              .setTitle('Message Deleted')
        .addField('Deleted Message',`${message.cleanContent}`)
@@ -1324,7 +1307,7 @@ client.on('messageDelete', message => {
        .addField('By', `<@${message.author.id}> `)
        .setColor('#36393e')
        .setTimestamp();
-     channel.send({embed:embed});
+     channel.send(embed);
  
 });
 
@@ -1374,7 +1357,7 @@ client.on('roleCreate', role => {
 
           let log = role.guild.channels.find('name', 'log');
           if (!log) return;
-          let embed = new Discord.RichEmbed()
+          let embed = new Discord.MessageEmbed()
             .setTitle('+ Role Created')
             .addField('Role Name', role.name, true)
             .addField('Role ID', role.id, true)
@@ -1408,7 +1391,7 @@ client.on('roleCreate', role => {
           let log = guild.channels.find('name', 'log');
           if (!log) return;
           client.fetchUser(member.id).then(myUser => {
-          let embed = new Discord.RichEmbed()
+          let embed = new Discord.MessageEmbed()
         .setAuthor("Banned")
 	    .setColor('#36393e') 
         .setThumbnail(myUser.avatarURL)
@@ -1441,7 +1424,7 @@ client.on('roleCreate', role => {
           let log = guild.channels.find('name', 'log');
           if (!log) return;
           client.fetchUser(member.id).then(myUser => {
-          let embed = new Discord.RichEmbed()
+          let embed = new Discord.MessageEmbed()
         .setAuthor("UnBanned")
 		.setColor('#36393e') 
 		 .setThumbnail(myUser.avatarURL)
@@ -1486,11 +1469,11 @@ client.on('message',message =>{
         invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
    
   });
-  var embed = new Discord.RichEmbed()
+  var embed = new Discord.MessageEmbed()
   .setColor("#000000")
   .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
   .setThumbnail("https://media.discordapp.net/attachments/477570106755383307/479229377037598720/22713057_151850495552450_709700562_o.jpg?width=201&height=201")
-           message.channel.send({ embed: embed });
+           message.channel.send(embed);
    
   });
    
