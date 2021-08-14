@@ -1,27 +1,13 @@
 
 
 const Discord = require('discord.js');
-
-
 const client = new Discord.Client();   
-const googl = require('goo.gl');  
-const translate = require('google-translate-api');   
-const fs = require("fs"); 
-const canvas = require("canvas");
-const getYoutubeID = require('get-youtube-id'); 
-const moment = require("moment");  
-const { Client, Util } = require('discord.js');  
-const ms = require("ms");
 
-const UserBlocked = new Set(); 
-const jimp = require('jimp');   
-const math = require('math-expression-evaluator'); 
-const stripIndents = require('common-tags').stripIndents;
-const google = require('google-it'); 
-const queue = new Map(); 
-const ytdl = require('ytdl-core');
- const dateFormat = require('dateformat'); 
- const pretty = require('pretty-ms') 
+client.on('ready', () => {
+    client.user.setActivity(`${prefix}help`, {//البايو
+        type: 'PLAYING'// الحاله 
+    }); 
+});
 
 var prefix = "$"
 
