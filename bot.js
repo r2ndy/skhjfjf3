@@ -13,7 +13,7 @@ var prefix = "$"
 
 
       
-      const devs = ['463857132060540958','421023400971075585'];
+      const devs = ['749064659457409106'];
 const adminprefix = "$"
 
 client.on('message', message => {
@@ -26,7 +26,7 @@ client.on('message', message => {
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
-    const embed = new Discord.MesageEmbed()
+    const embed = new Discord.MessageEmbed()
         .setColor("RANDOM")
           .setDescription(" تم أرسال الرابط برسالة خاصة ")
            .setAuthor(client.user.username, client.user.avatarURL)
@@ -570,7 +570,7 @@ client.on('message',async message => {
   .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/HatwJavgM5**")
      
      
-  message.channel.sendEmbed(embed);
+  message.channel.send(embed);
     }
 });
 
@@ -583,7 +583,7 @@ client.on('message',async message => {
 		     	var prefix ="$";
                 if(message.content === prefix + "inv") {
                     let embed = new Discord.MessageEmbed ()
-                    embed.setTitle("**:arrow_right: Invite Cozmo Bot!**")
+                    embed.setTitle("**:arrow_right: Invite Vip Bot!**")
                     .setURL("https://discord.com/api/oauth2/authorize?client_id=875193308748587068&permissions=8&scope=bot");
                    message.channel.send(embed);
                   }
