@@ -605,7 +605,7 @@ client.on('message',async message => {
 
 client.on('message', message => {
     if(message.content.startsWith(prefix+'help')) {
-   const embed =Discord.MessageEmbed()
+   const embed = new Discord.MessageEmbed()
 .setColor('RANDOM')
         .setDescription(`**
 
@@ -647,7 +647,7 @@ $sup - الدعم الفني :nut_and_bolt:**`)
 
 client.on('message', message => {
      if (message.content === (prefix + "help")) {
-     let embed = new Discord.messageEmbed()
+     let embed = new Discord.MessageEmbed()
   .setAuthor(message.author.username)
   .setColor("#8650a7")
   .addField("Done" , " تــــم ارســالك في الخــاص")
